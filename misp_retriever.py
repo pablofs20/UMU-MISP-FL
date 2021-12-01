@@ -103,7 +103,7 @@ if __name__ == '__main__':
                 accuracy_hist = fl_client.get_accuracy_hist()
                 
                 ###
-                # Upload final model back to MISP
+                # Upload final model back to MISP & plot accuracy history
                 ###
 
                 df_list.clear()
