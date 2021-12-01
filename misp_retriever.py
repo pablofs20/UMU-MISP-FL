@@ -38,7 +38,7 @@ def parse_event(event):
 def get_last_events(last_timestamp):
     results = misp.search(timestamp=last_timestamp+1, pythonify=True)
     if len(results) > 0:
-        print_message("RESULT", str(len(results)) + " new events have been found ")
+        print_message("RESULT", str(len(results)) + " new events have been found")
         for event in results:
             event = event.to_dict()
             last_timestamp = int(event.get('timestamp'))
