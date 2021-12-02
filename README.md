@@ -13,7 +13,7 @@ connected to the aggregator is equal or higher than 2, the FL process will begin
 model can be pushed back to the local MISP server to share it with other domains. This workflow can be consulted in detail in the following sequence diagram:
 
 <p align="center">
-  <img src="https://github.com/pablofs20/misp-fl/blob/master/seq_diagram.png?raw=true" alt="Sublime's custom image"/>
+  <img src="https://github.com/pablofs20/misp-fl/blob/master/images/seq_diagram.png?raw=true" alt="Sublime's custom image"/>
 </p>
 
 For the FL part, we leverage the Flower framework. Please consult the [Flower official documentation](https://flower.dev/docs/) for further details.
