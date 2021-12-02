@@ -27,8 +27,8 @@ In addition to the code in this repository, a MISP server has to be configured a
 be created. Also, the `keys.py` module has to be completed, at least, with the MISP server URL and an user authentication key. An example of this part will be uploaded
 soon.
 
-## Launch
-First, execute the `aggregator.py` module. This module has no command line parameters, so simply run:
+## Execution
+First, launch the `aggregator.py` module. This module has no command line parameters, so simply run:
 
 ```
 python aggregator.py
