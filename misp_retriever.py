@@ -63,9 +63,12 @@ def print_message(m_type, text):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='MISP data retriever.')
-    parser.add_argument("-r", "--retr_interval", required=True, help="Time interval for querying MISP for new data") 
-    parser.add_argument("-i", "--inst_threshold", required=True, help="Number of instances to register against the aggregator and consume the data")
-    parser.add_argument("-a", "--aggregator_ip", required=True, help="IP where the FL aggregator server is located")
+    parser.add_argument("-r", "--retr_interval", required=True, \
+            help="Time interval for querying MISP for new data") 
+    parser.add_argument("-i", "--inst_threshold", required=True, \
+            help="Number of instances to register against the aggregator and consume the data")
+    parser.add_argument("-a", "--aggregator_ip", required=True, \
+            help="IP where the FL aggregator server is located")
     args = parser.parse_args()
 
     retr_interval = int(args.retr_interval)
