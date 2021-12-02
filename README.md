@@ -24,11 +24,11 @@ recommend to set up a Conda environment and provide the requirements file as inp
 [Conda documentation](https://docs.conda.io/en/latest/) for further details.
 
 In addition to the code in this repository, a MISP server has to be configured and a new object template adapted to the ToN-IoT dataset form (column names and value types) has to
-be created. Also, the 'keys.py' module has to be completed, at least, with the MISP server URL and an user authentication key. An example of this part will be uploaded
+be created. Also, the `keys.py` module has to be completed, at least, with the MISP server URL and an user authentication key. An example of this part will be uploaded
 soon.
 
 ## Launch
-First, execute the 'aggregator.py' module. This module has no command line parameters, so simply run:
+First, execute the `aggregator.py` module. This module has no command line parameters, so simply run:
 
 ```
 python aggregator.py
@@ -38,7 +38,7 @@ Next, run the `misp_retriever.py` module, providing the three main parameters 'r
 instances to register against the aggregator and consume the data) and 'aggregator_ip' (IP where the FL aggregator server is located) through command line. 
 
 ```
-python misp_retriever.py --retr-interval=<retrieve interval in seconds> --inst-threshold=<number of instances> --aggregator-ip=<xx:xx:xx:xx>
+python misp_retriever.py --retr-interval=<retrieve interval in seconds> --inst-threshold=<number of instances> --aggregator-ip=<XX:XX:XX:XX>|<domain-name>
 ```
 
 If the instance threshold is reached, a FL client will be created and registered against the aggregator. However, the process will not start until at least a second
