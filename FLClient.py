@@ -79,7 +79,8 @@ class ToNIoTClient(fl.client.NumPyClient):
 
 
 class FLClient:
-    def __init__(self, data):
+    def __init__(self, aggregator_ip, data):
+        self.aggregator_ip = aggregator_ip
         data = preprocess_data(data)
         self.x_train, self.x_test, self.y_train, self.y_test = \
             split_data(data)
@@ -87,7 +88,7 @@ class FLClient:
         self.accuracy_hist = []
 
     def start(self, aggregator_ip):
-        fl.client.start_numpy_client("{aggregator_ip}:8080".format(aggregator_ip=aggregator_ip), client=ToNIoTClient(self))
+        fl.client.start_numpy_client("{aggregator_ip}:8080".format(aggregator_ip=self.aggregator_ip), client=ToNIoTClient(self))
 
     def get_final_model(self):
         return self.model

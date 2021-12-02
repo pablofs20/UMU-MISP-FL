@@ -103,8 +103,8 @@ if __name__ == '__main__':
                 data = pd.read_csv("data_party0_compressed.csv")
 
                 print_message("INFO", "Starting FL...")
-                fl_client = FLClient(data)
-                fl_client.start(aggregator_ip)
+                fl_client = FLClient(aggregator_ip, data)
+                fl_client.start()
                 
                 print_message("INFO", "FL process has ended. Retrieving final model...")
                 final_model = fl_client.get_final_model()
