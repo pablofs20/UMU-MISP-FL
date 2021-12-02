@@ -13,10 +13,7 @@ except ImportError:
 import pandas as pd
 import time
 import json
-
-
-INST_THRESHOLD = 1000
-RETR_INTERVAL = 6 # seconds
+import argparse
 
 
 def parse_event(event):
@@ -48,11 +45,11 @@ def get_last_events(last_timestamp):
     return last_timestamp, results
 
 def get_last_timestamp():
-    f = open("last_timestamp", "r")
+    f = open("resources/last_timestamp", "r")
     return int(f.readline())
 
 def set_last_timestamp(last_timestamp):
-    f = open("last_timestamp", "w")
+    f = open("resources/last_timestamp", "w")
     f.write(str(last_timestamp))
 
 def print_message(m_type, text):
@@ -65,6 +62,16 @@ def print_message(m_type, text):
 
 
 if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description='MISP data retriever.')
+    parser.add_argument("-r", "--retr_interval", required=True, help="Time interval for querying MISP for new data") 
+    parser.add_argument("-i", "--inst_threshold", required=True, help="Number of instances to register against the aggregator and consume the data")
+    parser.add_argument("-a", "--aggregator_ip", required=True, help="IP where the FL aggregator server is located")
+    args = parser.parse_args()
+
+    retr_interval = int(args.retr_interval)
+    inst_threshold = int(args.inst_threshold)
+    aggregator_ip = args.aggregator_ip
+
     if misp_client_cert == '':
         misp_client_cert = None
     else:
@@ -90,13 +97,14 @@ if __name__ == '__main__':
                 df_list.append(df)
             
             current_instances = len(df_list)
-            if current_instances > INST_THRESHOLD:
+            if current_instances > inst_threshold:
                 print_message("INFO", "The instance threshold has been reached")
-                data = pd.concat(df_list, ignore_index=True)
+                #data = pd.concat(df_list, ignore_index=True)
+                data = pd.read_csv("data_party0_compressed.csv")
 
                 print_message("INFO", "Starting FL...")
                 fl_client = FLClient(data)
-                fl_client.start()
+                fl_client.start(aggregator_ip)
                 
                 print_message("INFO", "FL process has ended. Retrieving final model...")
                 final_model = fl_client.get_final_model()
@@ -108,7 +116,7 @@ if __name__ == '__main__':
 
                 df_list.clear()
 
-            time.sleep(RETR_INTERVAL)
+            time.sleep(retr_interval)
     
     except KeyboardInterrupt:
         # Save new last timestamp and exit

@@ -86,8 +86,8 @@ class FLClient:
         self.model = create_model(data)
         self.accuracy_hist = []
 
-    def start(self):
-        fl.client.start_numpy_client("localhost:8080", client=ToNIoTClient(self))
+    def start(self, aggregator_ip):
+        fl.client.start_numpy_client("{aggregator_ip}:8080".format(aggregator_ip=aggregator_ip), client=ToNIoTClient(self))
 
     def get_final_model(self):
         return self.model
