@@ -12,7 +12,7 @@ events and, once it has enough data, it will register against the FL aggregator 
 connected to the aggregator is equal or higher than 2, the FL process will begin and a ML model will be trained collaboratively by the registered clients. Finally, this
 model can be pushed back to the local MISP server to share it with other domains.
 
-For the FL part, we leverage the Flower framework. Please consult the [official documentation](https://flower.dev/docs/) for further details.
+For the FL part, we leverage the Flower framework. Please consult the [Flower official documentation](https://flower.dev/docs/) for further details.
 
 ## Configuration
 This software is coded and tested in Python 3.6.9. Since multiple libraries have been employed, we provide a Python requirements file containing all the dependencies. From this, we
