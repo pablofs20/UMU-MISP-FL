@@ -34,8 +34,8 @@ First, execute the `aggregator.py` module. This module has no command line param
 python aggregator.py
 ```
 
-Next, run the `misp_retriever.py` module, providing the three main parameters 'retr-interval' (time interval for querying MISP for new data), 'inst_threshold' (# of
-instances to register against the aggregator and consume the data) and 'aggregator_ip' (IP where the FL aggregator server is located) through command line. 
+Next, run the `misp_retriever.py` module, providing the three main parameters '-r' or '--retrieve_interval' (time interval for querying MISP for new data), '-i' or '--inst_threshold' (# of
+instances to register against the aggregator and consume the data) and '-a' or '--aggregator-ip' (IP where the FL aggregator server is located) through command line. 
 
 ```
 python misp_retriever.py --retr-interval=<retrieve interval in seconds> --inst-threshold=<number of instances> --aggregator-ip=<XX:XX:XX:XX>|<domain-name>
