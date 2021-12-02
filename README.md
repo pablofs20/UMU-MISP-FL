@@ -23,7 +23,7 @@ This software is coded and tested in Python 3.6.9. Since multiple libraries have
 recommend to set up a Conda environment and provide the requirements file as input. If you choose this option, please consult the
 [Conda documentation](https://docs.conda.io/en/latest/) for further details.
 
-In addition to the code in this repository, a MISP server has to be configured and a new object template adapted to the ToN-IoT dataset form (column names, etc.) has to
+In addition to the code in this repository, a MISP server has to be configured and a new object template adapted to the ToN-IoT dataset form (column names and value types) has to
 be created. Also, the 'keys.py' module has to be completed, at least, with the MISP server URL and an user authentication key. An example of this part will be uploaded
 soon.
 
