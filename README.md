@@ -6,18 +6,18 @@ method for an organization to use the IoCs shared through MISP and give a feedba
 an aggregator and some other clients, and a final model, trained collaboratively by all of the clients and their private data, is obtained. This resulting model is fed
 back to the local MISP server and, therefore, it can be used by other involved organizations to deploy it in, e.g., an anomaly-based IDS.
 
-For this experiment, we use several partitions of the [ToN-IoT dataset]{https://research.unsw.edu.au/projects/toniot-datasets}, one per configured client. Each partition (representing the data which would belong to an specific
+For this experiment, we use several partitions of the [ToN-IoT dataset](https://research.unsw.edu.au/projects/toniot-datasets), one per configured client. Each partition (representing the data which would belong to an specific
 organization) is used to feed the MISP server on one side (one event per dataset instance). On the other side, a MISP retriever module will periodically ask for new 
 events and, once it has enough data, it will register against the FL aggregator that will be running from the beginning of the whole process. When the number of clients
 connected to the aggregator is equal or higher than 2, the FL process will begin and a ML model will be trained collaboratively by the registered clients. Finally, this
 model can be pushed back to the local MISP server to share it with other domains.
 
-For the FL part, we leverage the Flower framework. Please consult the [official documentation]{https://flower.dev/docs/} for further details.
+For the FL part, we leverage the Flower framework. Please consult the [official documentation](https://flower.dev/docs/) for further details.
 
 ## Configuration
 This software is coded and tested in Python 3.6.9. Since multiple libraries have been employed, we provide a Python requirements file containing all the dependencies. From this, we
 recommend to set up a Conda environment and provide the requirements file as input. If you choose this option, please consult the
-[Conda documentation]{https://docs.conda.io/en/latest/} for further details.
+[Conda documentation](https://docs.conda.io/en/latest/) for further details.
 
 In addition to the code in this repository, a MISP server has to be configured and a new object template adapted to the ToN-IoT dataset form (column names, etc.) has to
 be created. Also, the 'keys.py' module has to be completed, at least, with the MISP server URL and an user authentication key. An example of this part will be uploaded
