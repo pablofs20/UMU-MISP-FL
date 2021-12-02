@@ -1,4 +1,4 @@
-# misp-fl
+# FL-trained ML models using real-time MISP data
 
 ## Overview
 This demo aims to leverage the data coming from a MISP server and train a ML model from it using Federated Learning (FL). The main objective is to provide an alternative
