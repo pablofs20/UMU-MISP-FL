@@ -1,0 +1,7 @@
+flwr==0.17.0
+numpy==1.19.5
+pandas==1.1.5
+pymisp==2.4.151
+scikit_learn==1.0.1
+tensorflow==1.14.0
+termcolor==1.1.0
