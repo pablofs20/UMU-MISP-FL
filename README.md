@@ -28,7 +28,7 @@ be created. Also, the 'keys.py' module has to be completed, at least, with the M
 soon.
 
 ## Launch
-First, run the 'aggregator.py' module. This module has no command line parameters, so simply run:
+First, execute the 'aggregator.py' module. This module has no command line parameters, so simply run:
 
 ```
 python aggregator.py
