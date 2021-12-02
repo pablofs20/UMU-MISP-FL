@@ -10,7 +10,7 @@ For this experiment, we use several partitions of the [ToN-IoT dataset](https://
 organization) is used to feed the MISP server on one side (one event per dataset instance). On the other side, a MISP retriever module will periodically ask for new 
 events and, once it has enough data, it will register against the FL aggregator that will be running from the beginning of the whole process. When the number of clients
 connected to the aggregator is equal or higher than 2, the FL process will begin and a ML model will be trained collaboratively by the registered clients. Finally, this
-model can be pushed back to the local MISP server to share it with other domains. This workflow can be consulted in detail in the following sequence diagram:
+model can be pushed back to the local MISP server to share it with other domains (not done yet). This workflow can be consulted in detail in the following sequence diagram:
 
 <p align="center">
   <img src="https://github.com/pablofs20/misp-fl/blob/master/images/seq_diagram.png?raw=true" alt="Sublime's custom image"/>
