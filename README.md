@@ -12,7 +12,9 @@ events and, once it has enough data, it will register against the FL aggregator 
 connected to the aggregator is equal or higher than 2, the FL process will begin and a ML model will be trained collaboratively by the registered clients. Finally, this
 model can be pushed back to the local MISP server to share it with other domains. This workflow can be consulted in detail in the following sequence diagram:
 
-![This is an image](https://github.com/pablofs20/misp-fl/blob/master/seq_diagram.png)
+<p align="center">
+  <img src="https://github.com/pablofs20/misp-fl/blob/master/seq_diagram.png?raw=true" alt="Sublime's custom image"/>
+</p>
 
 For the FL part, we leverage the Flower framework. Please consult the [Flower official documentation](https://flower.dev/docs/) for further details.
 
