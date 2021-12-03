@@ -46,4 +46,4 @@ client joins the process. In order to do this, you need to set up a second clien
 
   - A normal FL client that uses data from a static dataset file. For instance, assuming we have the ToN-IoT partitions in CSV files, create a Flower client able to 
   load the data from the file, preprocess it, create an initial ML model and register against the aggregator. To do this, please refer to the `FLClient.py` module code and [Flower official documentation](https://flower.dev/docs/).
-  - Another MISP-FL client (parallel to the previous one) that retrieves the data from its local MISP server. This can represent another organization.
+  - Another MISP-FL client (similar to the described one) that retrieves the data from its local MISP server. This can represent another organization.
