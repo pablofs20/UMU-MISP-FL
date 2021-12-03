@@ -60,18 +60,23 @@ def print_message(m_type, text):
     elif m_type == "ERROR":
         print(colored("(ERROR) ", "red") + text)
 
-
-if __name__ == '__main__':
+def parse_arguments():
     parser = argparse.ArgumentParser(description='MISP data retriever.')
+    
     parser.add_argument("-r", "--retr_interval", required=True, \
             help="Time interval for querying MISP for new data") 
     parser.add_argument("-i", "--inst_threshold", required=True, \
             help="Number of instances to register against the aggregator and consume the data")
+    
     args = parser.parse_args()
 
-    retr_interval = int(args.retr_interval)
-    inst_threshold = int(args.inst_threshold)
+    return int(args.retr_interval), int(args.inst_threshold)
 
+
+
+if __name__ == '__main__':
+    retr_interval, inst_threshold = parse_arguments()
+    
     if misp_client_cert == '':
         misp_client_cert = None
     else:
