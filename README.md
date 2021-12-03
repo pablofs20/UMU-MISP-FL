@@ -16,11 +16,11 @@ model can be pushed back to the local MISP server to share it with other domains
   <img src="https://github.com/pablofs20/misp-fl/blob/master/images/seq_diagram.png?raw=true" alt="Sublime's custom image"/>
 </p>
 
-For the FL part, we leverage the Flower framework. Please consult the [Flower official documentation](https://flower.dev/docs/) for further details.
+For the FL part, we leverage the Flower framework. Please consult the [Flower official documentation](https://flower.dev/docs/) for further details. We also provide some examples of lightweight ToN-IoT partitions under `data` folder, each one containing 1000 samples and 5 different labels (benign, xss, injection, password and scanning) for testing purposes.
 
 ## Configuration
-This software is coded and tested in Python 3.6.9. Since multiple libraries have been employed, we provide a Python requirements file containing all the dependencies. From this, we
-recommend to set up a Conda environment and provide the requirements file as input. If you choose this option, please consult the
+This software is coded and tested in Python 3.6.9. Since multiple libraries have been employed, we provide a Python requirements file under `resources` folder containing all the dependencies. From this, we
+recommend to set up a Conda/Miniconda environment and provide the requirements file as input. If you choose this option, please consult the
 [Conda documentation](https://docs.conda.io/en/latest/) for further details.
 
 In addition to the code in this repository, a MISP server has to be configured and a new object template adapted to the ToN-IoT dataset form (column names and value types) has to
@@ -34,8 +34,8 @@ First, launch the `aggregator.py` module. This module has no command line parame
 python aggregator.py
 ```
 
-Next, run the `misp_retriever.py` module, providing the three main parameters '-r' or '--retrieve_interval' (time interval for querying MISP for new data), '-i' or '--inst_threshold' (# of
-instances to register against the aggregator and consume the data) and '-a' or '--aggregator-ip' (IP where the FL aggregator server is located) through command line. 
+Next, run the `misp_retriever.py` module, providing the three main parameters `-r` or `--retrieve_interval` (time interval for querying MISP for new data), `-i` or `--inst_threshold` (# of
+instances to register against the aggregator and consume the data) and `-a` or `--aggregator-ip` (IP where the FL aggregator server is located) through command line. 
 
 ```
 python misp_retriever.py --retr-interval=<retrieve interval in seconds> --inst-threshold=<number of instances> --aggregator-ip=<XX:XX:XX:XX>|<domain-name>
@@ -46,4 +46,4 @@ client joins the process. In order to do this, you need to set up a second clien
 
   - A normal FL client that uses data from a static dataset file. For instance, assuming we have the ToN-IoT partitions in CSV files, create a Flower client able to 
   load the data from the file, preprocess it, create an initial ML model and register against the aggregator. To do this, please refer to the `FLClient.py` module code and [Flower official documentation](https://flower.dev/docs/).
-  - Another MISP-FL client (parallel to the previous one) that retrieves the data from its local MISP server. This can represent another organization.
+  - Another MISP-FL client (similar to the described one) that retrieves the data from its local MISP server. This can represent another organization.
