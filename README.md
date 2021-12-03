@@ -19,7 +19,7 @@ model can be pushed back to the local MISP server to share it with other domains
 For the FL part, we leverage the Flower framework. Please consult the [Flower official documentation](https://flower.dev/docs/) for further details. We also provide some examples of lightweight ToN-IoT partitions under `data` folder, each one containing 1000 samples and 5 different labels (benign, xss, injection, password and scanning) for testing purposes.
 
 ## Configuration
-This software is coded and tested in Python 3.6.9. Since multiple libraries have been employed, we provide a Python requirements file containing all the dependencies. From this, we
+This software is coded and tested in Python 3.6.9. Since multiple libraries have been employed, we provide a Python requirements file under `resources` folder containing all the dependencies. From this, we
 recommend to set up a Conda environment and provide the requirements file as input. If you choose this option, please consult the
 [Conda documentation](https://docs.conda.io/en/latest/) for further details.
 
