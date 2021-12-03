@@ -16,7 +16,7 @@ model can be pushed back to the local MISP server to share it with other domains
   <img src="https://github.com/pablofs20/misp-fl/blob/master/images/seq_diagram.png?raw=true" alt="Sublime's custom image"/>
 </p>
 
-For the FL part, we leverage the Flower framework. Please consult the [Flower official documentation](https://flower.dev/docs/) for further details.
+For the FL part, we leverage the Flower framework. Please consult the [Flower official documentation](https://flower.dev/docs/) for further details. We also provide some examples of lightweight ToN-IoT partitions under `data` folder, each one containing 1000 samples and 5 different labels (benign, xss, injection, password and scanning).
 
 ## Configuration
 This software is coded and tested in Python 3.6.9. Since multiple libraries have been employed, we provide a Python requirements file containing all the dependencies. From this, we
