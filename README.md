@@ -3,7 +3,7 @@
 ## Overview
 This demo aims to leverage the data coming from a MISP server to train a ML model using Federated Learning (FL). The main objective is to provide and test an alternative
 method for an organization to use the IoCs shared through MISP and give a feedback. Once enough data has been received by the client, a FL process is triggered along with
-an aggregator and some other clients, and a final model, trained collaboratively by all of the clients and their local data, is obtained. This resulting model is fed
+an aggregator and some other clients, and a final model, trained collaboratively by all of the clients with their local data, is obtained. This resulting model is fed
 back to the local MISP server and, therefore, it can be used by other involved organizations to deploy it in, e.g., an anomaly-based IDS.
 
 For this experiment, we use several partitions of the [ToN-IoT dataset](https://research.unsw.edu.au/projects/toniot-datasets), one per configured client. Each partition (representing the data which would belong to an specific
