@@ -36,11 +36,11 @@ First, launch the `aggregator.py` module. This module has no command line parame
 python aggregator.py
 ```
 
-Next, run the `misp_retriever.py` module, providing the three main parameters `-r` or `--retrieve_interval` (time interval for querying MISP for new data), `-i` or `--inst_threshold` (# of
-instances to register against the aggregator and consume the data) and `-a` or `--aggregator_ip` (IP where the FL aggregator server is located) through command line. 
+Next, run the `misp_retriever.py` module, providing the two main parameters `-r` or `--retrieve_interval` (time interval for querying MISP for new data) and `-i` or `--inst_threshold` (# of
+instances to register against the aggregator and consume the data) through command line. 
 
 ```
-python misp_retriever.py --retr_interval=<retrieve interval in seconds> --inst_threshold=<number of instances> --aggregator_ip=<XX:XX:XX:XX>|<domain-name>
+python misp_retriever.py --retr_interval=<retrieve interval in seconds> --inst_threshold=<number of instances>
 ```
 
 If the instance threshold is reached, a FL client will be created and registered against the aggregator. However, the process will not start until at least a second
