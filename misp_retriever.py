@@ -103,7 +103,7 @@ if __name__ == '__main__':
             if current_instances > inst_threshold:
                 print_message("INFO", "The instance threshold has been reached")
                 data = pd.concat(df_list, ignore_index=True)
-
+                
                 print_message("INFO", "Starting FL...")
                 fl_client = FLClient(aggregator_ip, data)
                 fl_client.start()

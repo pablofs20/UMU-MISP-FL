@@ -5,15 +5,14 @@ import warnings
 # To avoid TF future warnings
 warnings.filterwarnings('ignore', category=FutureWarning)
 import tensorflow
+import configparser
 
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler
 
-
-TEST_SIZE = 0.2
-
+CONFIG_FILE = "resources/fl.ini"
 
 def preprocess_data(data):
     # Transform INF and NaN values to median
@@ -30,14 +29,14 @@ def preprocess_data(data):
 
     return data
 
-def split_data(data):
+def split_data(data, test_size):
     # Split data intro train/test sets
     x_0 = data.iloc[:, :-1]
     y_0 = data.iloc[:, -1]
     x = np.array(x_0)
     y = np.array(y_0)
     x_train, x_test, y_train, y_test = \
-        train_test_split(x, y, test_size = TEST_SIZE)
+        train_test_split(x, y, test_size = test_size)
 
     return x_train, x_test, y_train, y_test
 
@@ -54,21 +53,31 @@ def create_model(data):
 
     return model
 
+def get_config():
+    config = configparser.ConfigParser()
+    config.read(CONFIG_FILE)
+    client_config = config['FL Client']
+
+    return float(client_config['TestSize']), int(client_config['LocalEpochs']), \
+            int(client_config['BatchSize']), int(client_config['StepsPerEpoch'])
 
 class ToNIoTClient(fl.client.NumPyClient):
     def __init__(self, client):
         self.x_train, self.x_test, self.y_train, self.y_test = \
             client.x_train, client.x_test, client.y_train, client.y_test
 
-        self.model = client.model
-        self.accuracy_hist = client.accuracy_hist
-            
+        self.model, self.accuracy_hist = client.model, client.accuracy_hist
+        
+        self.epochs, self.batch_size, self.steps_per_epoch = \
+                client.epochs, client.batch_size, client.steps_per_epoch
+
     def get_parameters(self):
         return self.model.get_weights()
 
     def fit(self, parameters, config):
         self.model.set_weights(parameters)
-        self.model.fit(self.x_train, self.y_train, epochs=1, batch_size=32, steps_per_epoch=1)
+        self.model.fit(self.x_train, self.y_train, epochs=self.epochs, \
+                batch_size=self.batch_size, steps_per_epoch=self.steps_per_epoch)
         return self.model.get_weights(), len(self.x_train), {}
 
     def evaluate(self, parameters, config):
@@ -81,9 +90,11 @@ class ToNIoTClient(fl.client.NumPyClient):
 class FLClient:
     def __init__(self, aggregator_ip, data):
         self.aggregator_ip = aggregator_ip
+        self.test_size, self.epochs, self.batch_size, self.steps_per_epoch = \
+                get_config() 
         data = preprocess_data(data)
         self.x_train, self.x_test, self.y_train, self.y_test = \
-            split_data(data)
+            split_data(data, self.test_size)
         self.model = create_model(data)
         self.accuracy_hist = []
 
