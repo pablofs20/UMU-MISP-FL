@@ -27,6 +27,8 @@ In addition to the code in this repository, a MISP server has to be configured a
 be created. Also, the `keys.py` module has to be completed, at least, with the MISP server URL and an user authentication key. An example of this part will be uploaded
 soon.
 
+By last, some of the main FL parameters, for both the aggregator and the clients, can be customized in the `resources/fl.ini` configuration file. 
+
 ## Execution
 First, launch the `aggregator.py` module. This module has no command line parameters, so simply run:
 
