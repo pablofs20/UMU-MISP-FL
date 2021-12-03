@@ -56,9 +56,12 @@ def create_model(data):
 def get_config():
     config = configparser.ConfigParser()
     config.read(CONFIG_FILE)
+    
     client_config = config['FL Client']
+    aggregator_config = config['FL Aggregator']
 
-    return float(client_config['TestSize']), int(client_config['LocalEpochs']), \
+    return str(aggregator_config['IP']), int(aggregator_config['Port']), \
+            float(client_config['TestSize']), int(client_config['LocalEpochs']), \
             int(client_config['BatchSize']), int(client_config['StepsPerEpoch'])
 
 class ToNIoTClient(fl.client.NumPyClient):
@@ -88,10 +91,9 @@ class ToNIoTClient(fl.client.NumPyClient):
 
 
 class FLClient:
-    def __init__(self, aggregator_ip, data):
-        self.aggregator_ip = aggregator_ip
-        self.test_size, self.epochs, self.batch_size, self.steps_per_epoch = \
-                get_config() 
+    def __init__(self, data):
+        self.aggregator_ip, self.aggregator_port, self.test_size, self.epochs, \
+                self.batch_size, self.steps_per_epoch = get_config() 
         data = preprocess_data(data)
         self.x_train, self.x_test, self.y_train, self.y_test = \
             split_data(data, self.test_size)
@@ -99,8 +101,9 @@ class FLClient:
         self.accuracy_hist = []
 
     def start(self):
-        fl.client.start_numpy_client("{aggregator_ip}:8080" \
-                .format(aggregator_ip=self.aggregator_ip), client=ToNIoTClient(self))
+        fl.client.start_numpy_client("{aggregator_ip}:{aggregator_port}" \
+                .format(aggregator_ip = self.aggregator_ip, aggregator_port = self.aggregator_port), \
+                client=ToNIoTClient(self))
 
     def get_final_model(self):
         return self.model

@@ -67,13 +67,10 @@ if __name__ == '__main__':
             help="Time interval for querying MISP for new data") 
     parser.add_argument("-i", "--inst_threshold", required=True, \
             help="Number of instances to register against the aggregator and consume the data")
-    parser.add_argument("-a", "--aggregator_ip", required=True, \
-            help="IP where the FL aggregator server is located")
     args = parser.parse_args()
 
     retr_interval = int(args.retr_interval)
     inst_threshold = int(args.inst_threshold)
-    aggregator_ip = args.aggregator_ip
 
     if misp_client_cert == '':
         misp_client_cert = None
@@ -103,9 +100,9 @@ if __name__ == '__main__':
             if current_instances > inst_threshold:
                 print_message("INFO", "The instance threshold has been reached")
                 data = pd.concat(df_list, ignore_index=True)
-                
+
                 print_message("INFO", "Starting FL...")
-                fl_client = FLClient(aggregator_ip, data)
+                fl_client = FLClient(data)
                 fl_client.start()
                 
                 print_message("INFO", "FL process has ended. Retrieving final model...")

@@ -8,7 +8,8 @@ if __name__ == '__main__':
     config.read(CONF_FILE)
     
     rounds = int(config['FL Aggregator']['Rounds'])
+    ip = config['FL Aggregator']['IP']
     port = config['FL Aggregator']['Port']
 
-    fl.server.start_server(server_address = '[::]:{port}'.format(port = port), \
-            config={"num_rounds": rounds})
+    fl.server.start_server(server_address = '{ip}:{port}' \
+            .format(ip = ip, port = port), config={"num_rounds": rounds})
