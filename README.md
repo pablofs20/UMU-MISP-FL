@@ -20,7 +20,7 @@ For the FL part, we leverage the Flower framework. Please consult the [Flower of
 
 ## Configuration
 This software is coded and tested in Python 3.6.9. Since multiple libraries have been employed, we provide a Python requirements file under `resources` folder containing all the dependencies. From this, we
-recommend to set up a Conda environment and provide the requirements file as input. If you choose this option, please consult the
+recommend to set up a Conda/Miniconda environment and provide the requirements file as input. If you choose this option, please consult the
 [Conda documentation](https://docs.conda.io/en/latest/) for further details.
 
 In addition to the code in this repository, a MISP server has to be configured and a new object template adapted to the ToN-IoT dataset form (column names and value types) has to
