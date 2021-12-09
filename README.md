@@ -16,7 +16,7 @@ model can be pushed back to the local MISP server to share it with other domains
   <img src="https://github.com/pablofs20/misp-fl/blob/master/images/seq_diagram.png?raw=true" alt="Sublime's custom image"/>
 </p>
 
-In this version, we shall remark that the database entity, since it will only be used to store the timestamp of the last processed event, has been replaced with a local file (`last_timestamp`) inside the `resources` folder. It should be noted that the initial timestamp is set to 0 in order to retrieve all the available events (first execution). 
+In this version, we shall remark that the database entity, since it will only be used to store the timestamp of the last processed event, has been replaced with a local file `last_timestamp` inside the `resources` folder. It should be noted that the initial timestamp is set to 0 in order to retrieve all the available events (first execution). 
 
 For the FL part, we leverage the Flower framework. Please consult the [Flower official documentation](https://flower.dev/docs/) for further details. We also provide some examples of lightweight ToN-IoT partitions under `data` folder, each one containing 1000 samples and 5 different labels (benign, xss, injection, password and scanning) for testing purposes.
 
