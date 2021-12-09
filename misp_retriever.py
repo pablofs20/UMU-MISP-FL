@@ -94,16 +94,13 @@ if __name__ == '__main__':
         misp_client_cert = misp_client_cert
 
     # Initialize MISP instance
-
     misp = ExpandedPyMISP(misp_url, misp_key, misp_verifycert,
                           cert=misp_client_cert)
 
     # Get timestamp from last processed event (saved)
-
     last_timestamp = get_last_timestamp()
 
     # Dataframes list that will contain a dataframe per event
-
     df_list = []
 
     try:
@@ -111,7 +108,6 @@ if __name__ == '__main__':
             print_message('INFO', 'Looking for new events...')
 
             # Get new events (from last timestamp)
-
             (last_timestamp, events) = get_last_events(last_timestamp)
             for event in events:
                 df = parse_event(event)
@@ -142,8 +138,6 @@ if __name__ == '__main__':
 
             time.sleep(retr_interval)
     except KeyboardInterrupt:
-
         # Save new last timestamp and exit
-
         print_message('INFO', 'Saving new timestamp and exiting...')
         set_last_timestamp(last_timestamp)
