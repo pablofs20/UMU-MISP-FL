@@ -16,6 +16,8 @@ model can be pushed back to the local MISP server to share it with other domains
   <img src="https://github.com/pablofs20/misp-fl/blob/master/images/seq_diagram.png?raw=true" alt="Sublime's custom image"/>
 </p>
 
+In this version, we shall remark that the database entity, since it will only be used to store the timestamp of the last processed event, has been replaced with a local file `last_timestamp` inside the `resources` folder. It should be noted that the initial timestamp is set to 0 in order to retrieve all the available events (first execution). 
+
 For the FL part, we leverage the Flower framework. Please consult the [Flower official documentation](https://flower.dev/docs/) for further details. We also provide some examples of lightweight ToN-IoT partitions under `data` folder, each one containing 1000 samples and 5 different labels (benign, xss, injection, password and scanning) for testing purposes.
 
 ## Configuration
@@ -24,7 +26,7 @@ recommend to set up a Conda/Miniconda environment and provide the requirements f
 [Conda documentation](https://docs.conda.io/en/latest/) for further details.
 
 In addition to the code in this repository, a MISP server has to be configured and a new object template adapted to the ToN-IoT dataset form  has to
-be created. We provide an object definition example inside `misp` folder. Also, the `keys.py` module has to be completed, at least, with the MISP server URL and an user authentication key.
+be created. We provide an object definition example inside `misp` folder. Also, the `keys.py` module has to be completed, at least, with the MISP server URL and a user authentication key.
 
 By last, some of the main FL parameters, for both the aggregator and the clients, can be customized in the `resources/fl.ini` configuration file. Inside the file, a brief description of each one is given.
 
@@ -35,7 +37,7 @@ First, launch the `aggregator.py` module. This module does not expect any comman
 python aggregator.py
 ```
 
-Next, run the `misp_retriever.py` module, providing the two main parameters `-r` or `--retrieve_interval` (time interval for querying MISP for new data) and `-i` or `--inst_threshold` (# of
+Next, run the `misp_retriever.py` module, providing the two main parameters `--retrieve_interval` or `-r` (time interval for querying MISP for new data) and `--inst_threshold` or `-i` (# of
 instances needed to register against the aggregator and consume the data) through command line: 
 
 ```
