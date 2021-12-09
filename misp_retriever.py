@@ -20,20 +20,23 @@ def parse_event(event):
     event = event.to_json()
     event = json.loads(event)
 
-    obj = event['Object'][0]
+    df = None
 
-    if obj['name'] != "ids-network-data":
-        return None
+    for obj in event['Object']:
+        column_names = []
+        column_values = []
+        if obj['name'] != "ids-network-data":
+            continue
+        for attr in obj['Attribute']:
+            column_names.append(attr['object_relation'])
+            column_values.append(attr['value'])
 
-    column_names = []
-    column_values = []
-    for attr in obj['Attribute']:
-        column_names.append(attr['object_relation'])
-        column_values.append(attr['value'])
-
-    event_dict = dict(zip(column_names, column_values))
-    df = pd.DataFrame(event_dict, index=[0])
-
+        event_dict = dict(zip(column_names, column_values))
+        if df is None:
+            df = pd.DataFrame(event_dict, index=[0])
+        else:
+            df = df.append(event_dict, ignore_index=True)
+        
     return df
 
 
@@ -111,7 +114,8 @@ if __name__ == '__main__':
             (last_timestamp, events) = get_last_events(last_timestamp)
             for event in events:
                 df = parse_event(event)
-                if df is not None:
+                print(df)
+                if len(df.index) != 0:
                     df_list.append(df)
 
             current_instances = len(df_list)
@@ -119,6 +123,8 @@ if __name__ == '__main__':
                 print_message('INFO',
                               'The instance threshold has been reached')
                 data = pd.concat(df_list, ignore_index=True)
+
+                print(data)
 
                 print_message('INFO', 'Starting FL...')
                 fl_client = FLClient(data)
