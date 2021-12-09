@@ -123,8 +123,6 @@ if __name__ == '__main__':
                               'The instance threshold has been reached')
                 data = pd.concat(df_list, ignore_index=True)
 
-                print(data)
-
                 print_message('INFO', 'Starting FL...')
                 fl_client = FLClient(data)
                 fl_client.start()
