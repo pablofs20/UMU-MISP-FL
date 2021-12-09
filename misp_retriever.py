@@ -20,12 +20,16 @@ def parse_event(event):
     event = event.to_json()
     event = json.loads(event)
 
+    obj = event['Object'][0]
+
+    if obj['name'] != "ids-network-data":
+        return None
+
     column_names = []
     column_values = []
-    for obj in event['Object']:
-        for attr in obj['Attribute']:
-            column_names.append(attr['object_relation'])
-            column_values.append(attr['value'])
+    for attr in obj['Attribute']:
+        column_names.append(attr['object_relation'])
+        column_values.append(attr['value'])
 
     event_dict = dict(zip(column_names, column_values))
     df = pd.DataFrame(event_dict, index=[0])
@@ -59,11 +63,11 @@ def set_last_timestamp(last_timestamp):
 
 def print_message(m_type, text):
     if m_type == 'INFO':
-        print colored('(INFO) ', 'green') + text
+        print(colored('(INFO) ', 'green') + text)
     elif m_type == 'RESULT':
-        print colored('(RESULT) ', 'yellow') + text
+        print (colored('(RESULT) ', 'yellow') + text)
     elif m_type == 'ERROR':
-        print colored('(ERROR) ', 'red') + text
+        print (colored('(ERROR) ', 'red') + text)
 
 
 def parse_arguments():
@@ -111,7 +115,8 @@ if __name__ == '__main__':
             (last_timestamp, events) = get_last_events(last_timestamp)
             for event in events:
                 df = parse_event(event)
-                df_list.append(df)
+                if df is not None:
+                    df_list.append(df)
 
             current_instances = len(df_list)
             if current_instances > inst_threshold:
