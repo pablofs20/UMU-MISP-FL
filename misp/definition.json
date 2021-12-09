@@ -1,0 +1,399 @@
+{
+  "attributes": {
+    "ACK Flag Count": {
+      "description": "",
+      "misp-attribute": "text",
+      "ui-priority": 0
+    },
+    "Active Max": {
+      "description": "",
+      "misp-attribute": "text",
+      "ui-priority": 0
+    },
+    "Active Mean": {
+      "description": "",
+      "misp-attribute": "text",
+      "ui-priority": 0
+    },
+    "Active Min": {
+      "description": "",
+      "misp-attribute": "text",
+      "ui-priority": 0
+    },
+    "Active Std": {
+      "description": "",
+      "misp-attribute": "text",
+      "ui-priority": 0
+    },
+    "Average Packet Size": {
+      "description": "",
+      "misp-attribute": "text",
+      "ui-priority": 0
+    },
+    "Bwd Bulk Rate Avg": {
+      "description": "",
+      "misp-attribute": "text",
+      "ui-priority": 0
+    },
+    "Bwd Bytes/Bulk Avg": {
+      "description": "",
+      "misp-attribute": "text",
+      "ui-priority": 0
+    },
+    "Bwd Header Length": {
+      "description": "",
+      "misp-attribute": "text",
+      "ui-priority": 0
+    },
+    "Bwd IAT Max": {
+      "description": "",
+      "misp-attribute": "text",
+      "ui-priority": 0
+    },
+    "Bwd IAT Mean": {
+      "description": "",
+      "misp-attribute": "text",
+      "ui-priority": 0
+    },
+    "Bwd IAT Min": {
+      "description": "",
+      "misp-attribute": "text",
+      "ui-priority": 0
+    },
+    "Bwd IAT Std": {
+      "description": "",
+      "misp-attribute": "text",
+      "ui-priority": 0
+    },
+    "Bwd IAT Total": {
+      "description": "",
+      "misp-attribute": "text",
+      "ui-priority": 0
+    },
+    "Bwd Init Win Bytes": {
+      "description": "",
+      "misp-attribute": "text",
+      "ui-priority": 0
+    },
+    "Bwd PSH Flags": {
+      "description": "",
+      "misp-attribute": "text",
+      "ui-priority": 0
+    },
+    "Bwd Packet Length Max": {
+      "description": "",
+      "misp-attribute": "text",
+      "ui-priority": 0
+    },
+    "Bwd Packet Length Mean": {
+      "description": "",
+      "misp-attribute": "text",
+      "ui-priority": 0
+    },
+    "Bwd Packet Length Min": {
+      "description": "",
+      "misp-attribute": "text",
+      "ui-priority": 0
+    },
+    "Bwd Packet Length Std": {
+      "description": "",
+      "misp-attribute": "text",
+      "ui-priority": 0
+    },
+    "Bwd Packet/Bulk Avg": {
+      "description": "",
+      "misp-attribute": "text",
+      "ui-priority": 0
+    },
+    "Bwd Packets/s": {
+      "description": "",
+      "misp-attribute": "text",
+      "ui-priority": 0
+    },
+    "Bwd Segment Size Avg": {
+      "description": "",
+      "misp-attribute": "text",
+      "ui-priority": 0
+    },
+    "Bwd URG Flags": {
+      "description": "",
+      "misp-attribute": "text",
+      "ui-priority": 0
+    },
+    "CWR Flag Count": {
+      "description": "",
+      "misp-attribute": "text",
+      "ui-priority": 0
+    },
+    "Down/Up Ratio": {
+      "description": "",
+      "misp-attribute": "text",
+      "ui-priority": 0
+    },
+    "ECE Flag Count": {
+      "description": "",
+      "misp-attribute": "text",
+      "ui-priority": 0
+    },
+    "FIN Flag Count": {
+      "description": "",
+      "misp-attribute": "text",
+      "ui-priority": 0
+    },
+    "FWD Init Win Bytes": {
+      "description": "",
+      "misp-attribute": "text",
+      "ui-priority": 0
+    },
+    "Flow Bytes/s": {
+      "description": "",
+      "misp-attribute": "text",
+      "ui-priority": 0
+    },
+    "Flow Duration": {
+      "description": "",
+      "misp-attribute": "text",
+      "ui-priority": 0
+    },
+    "Flow IAT Max": {
+      "description": "",
+      "misp-attribute": "text",
+      "ui-priority": 0
+    },
+    "Flow IAT Mean": {
+      "description": "",
+      "misp-attribute": "text",
+      "ui-priority": 0
+    },
+    "Flow IAT Min": {
+      "description": "",
+      "misp-attribute": "text",
+      "ui-priority": 0
+    },
+    "Flow IAT Std": {
+      "description": "",
+      "misp-attribute": "text",
+      "ui-priority": 0
+    },
+    "Flow Packets/s": {
+      "description": "",
+      "misp-attribute": "text",
+      "ui-priority": 0
+    },
+    "Fwd Act Data Pkts": {
+      "description": "",
+      "misp-attribute": "text",
+      "ui-priority": 0
+    },
+    "Fwd Bulk Rate Avg": {
+      "description": "",
+      "misp-attribute": "text",
+      "ui-priority": 0
+    },
+    "Fwd Bytes/Bulk Avg": {
+      "description": "",
+      "misp-attribute": "text",
+      "ui-priority": 0
+    },
+    "Fwd Header Length": {
+      "description": "",
+      "misp-attribute": "text",
+      "ui-priority": 0
+    },
+    "Fwd IAT Max": {
+      "description": "",
+      "misp-attribute": "text",
+      "ui-priority": 0
+    },
+    "Fwd IAT Mean": {
+      "description": "",
+      "misp-attribute": "text",
+      "ui-priority": 0
+    },
+    "Fwd IAT Min": {
+      "description": "",
+      "misp-attribute": "text",
+      "ui-priority": 0
+    },
+    "Fwd IAT Std": {
+      "description": "",
+      "misp-attribute": "text",
+      "ui-priority": 0
+    },
+    "Fwd IAT Total": {
+      "description": "",
+      "misp-attribute": "text",
+      "ui-priority": 0
+    },
+    "Fwd PSH Flags": {
+      "description": "",
+      "misp-attribute": "text",
+      "ui-priority": 0
+    },
+    "Fwd Packet Length Max": {
+      "description": "",
+      "misp-attribute": "text",
+      "ui-priority": 0
+    },
+    "Fwd Packet Length Mean": {
+      "description": "",
+      "misp-attribute": "text",
+      "ui-priority": 0
+    },
+    "Fwd Packet Length Min": {
+      "description": "",
+      "misp-attribute": "text",
+      "ui-priority": 0
+    },
+    "Fwd Packet Length Std": {
+      "description": "",
+      "misp-attribute": "text",
+      "ui-priority": 0
+    },
+    "Fwd Packet/Bulk Avg": {
+      "description": "",
+      "misp-attribute": "text",
+      "ui-priority": 0
+    },
+    "Fwd Packets/s": {
+      "description": "",
+      "misp-attribute": "text",
+      "ui-priority": 0
+    },
+    "Fwd Seg Size Min": {
+      "description": "",
+      "misp-attribute": "text",
+      "ui-priority": 0
+    },
+    "Fwd Segment Size Avg": {
+      "description": "",
+      "misp-attribute": "text",
+      "ui-priority": 0
+    },
+    "Fwd URG Flags": {
+      "description": "",
+      "misp-attribute": "text",
+      "ui-priority": 0
+    },
+    "Idle Max": {
+      "description": "",
+      "misp-attribute": "text",
+      "ui-priority": 0
+    },
+    "Idle Mean": {
+      "description": "",
+      "misp-attribute": "text",
+      "ui-priority": 0
+    },
+    "Idle Min": {
+      "description": "",
+      "misp-attribute": "text",
+      "ui-priority": 0
+    },
+    "Idle Std": {
+      "description": "",
+      "misp-attribute": "text",
+      "ui-priority": 0
+    },
+    "Label": {
+      "description": "",
+      "misp-attribute": "text",
+      "ui-priority": 0
+    },
+    "PSH Flag Count": {
+      "description": "",
+      "misp-attribute": "text",
+      "ui-priority": 0
+    },
+    "Packet Length Max": {
+      "description": "",
+      "misp-attribute": "text",
+      "ui-priority": 0
+    },
+    "Packet Length Mean": {
+      "description": "",
+      "misp-attribute": "text",
+      "ui-priority": 0
+    },
+    "Packet Length Min": {
+      "description": "",
+      "misp-attribute": "text",
+      "ui-priority": 0
+    },
+    "Packet Length Std": {
+      "description": "",
+      "misp-attribute": "text",
+      "ui-priority": 0
+    },
+    "Packet Length Variance": {
+      "description": "",
+      "misp-attribute": "text",
+      "ui-priority": 0
+    },
+    "Protocol": {
+      "description": "",
+      "misp-attribute": "text",
+      "ui-priority": 0
+    },
+    "RST Flag Count": {
+      "description": "",
+      "misp-attribute": "text",
+      "ui-priority": 0
+    },
+    "SYN Flag Count": {
+      "description": "",
+      "misp-attribute": "text",
+      "ui-priority": 0
+    },
+    "Subflow Bwd Bytes": {
+      "description": "",
+      "misp-attribute": "text",
+      "ui-priority": 0
+    },
+    "Subflow Bwd Packets": {
+      "description": "",
+      "misp-attribute": "text",
+      "ui-priority": 0
+    },
+    "Subflow Fwd Bytes": {
+      "description": "",
+      "misp-attribute": "text",
+      "ui-priority": 0
+    },
+    "Subflow Fwd Packets": {
+      "description": "",
+      "misp-attribute": "text",
+      "ui-priority": 0
+    },
+    "Total Bwd packets": {
+      "description": "",
+      "misp-attribute": "text",
+      "ui-priority": 0
+    },
+    "Total Fwd Packet": {
+      "description": "",
+      "misp-attribute": "text",
+      "ui-priority": 0
+    },
+    "Total Length of Bwd Packet": {
+      "description": "",
+      "misp-attribute": "text",
+      "ui-priority": 0
+    },
+    "Total Length of Fwd Packet": {
+      "description": "",
+      "misp-attribute": "text",
+      "ui-priority": 0
+    },
+    "URG Flag Count": {
+      "description": "",
+      "misp-attribute": "text",
+      "ui-priority": 0
+    }
+  },
+  "description": "ToN-IoT-based MISP object to simulate real-time attack patterns",
+  "meta-category": "network",
+  "name": "ids-network-data",
+  "uuid": "ea1c97ae-cb89-4e15-aad0-18e5db3483b2",
+  "version": "1.0"
+}
