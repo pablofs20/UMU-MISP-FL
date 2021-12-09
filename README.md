@@ -35,7 +35,7 @@ First, launch the `aggregator.py` module. This module does not expect any comman
 python aggregator.py
 ```
 
-Next, run the `misp_retriever.py` module, providing the two main parameters `-r` or `--retrieve_interval` (time interval for querying MISP for new data) and `-i` or `--inst_threshold` (# of
+Next, run the `misp_retriever.py` module, providing the two main parameters `--retrieve_interval` or `-r` (time interval for querying MISP for new data) and `--inst_threshold` or `-i` (# of
 instances needed to register against the aggregator and consume the data) through command line: 
 
 ```
