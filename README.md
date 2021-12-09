@@ -26,7 +26,7 @@ recommend to set up a Conda/Miniconda environment and provide the requirements f
 [Conda documentation](https://docs.conda.io/en/latest/) for further details.
 
 In addition to the code in this repository, a MISP server has to be configured and a new object template adapted to the ToN-IoT dataset form  has to
-be created. We provide an object definition example inside `misp` folder. Also, the `keys.py` module has to be completed, at least, with the MISP server URL and a user authentication key.
+be created. We provide an object definition example inside `misp` folder. Also, the `keys.py` module has to be completed, at least, with the MISP server URL and a user authentication key. Please note that this first version will only work with one object per event.
 
 By last, some of the main FL parameters, for both the aggregator and the clients, can be customized in the `resources/fl.ini` configuration file. Inside the file, a brief description of each one is given.
 
