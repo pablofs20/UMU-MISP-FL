@@ -114,8 +114,7 @@ if __name__ == '__main__':
             (last_timestamp, events) = get_last_events(last_timestamp)
             for event in events:
                 df = parse_event(event)
-                print(df)
-                if len(df.index) != 0:
+                if df is not None:
                     df_list.append(df)
 
             current_instances = len(df_list)
