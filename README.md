@@ -44,8 +44,14 @@ instances needed to register against the aggregator and consume the data) throug
 python consumer.py --retr_interval=<retrieve interval in seconds> --inst_threshold=<number of instances>
 ```
 
-If the instance threshold is reached, a Flower FL client (see `FLClient.py`) will be created and registered against the aggregator. However, the process will not start until at least a second
+By last, run the `producer.py` module, providing the two main parameters `--nobjects` or `-n` (number of desired objects per event) and `--data_source` or `-d` (data source file). To launch it with the provided data files, set this last parameter to one of the three provided data files (`data\ton_iot_1.csv`, `data\ton_iot_2.csv` or `data\ton_iot_3.csv`):
+
+```
+python producer.py --nobjects=<objects per event> --data_source=<data source filename>
+```
+
+If the instance threshold is reached, a Flower FL client (see `FLClient.py`) will be created by the consumer, and will register automatically against the aggregator. However, the process will not start until at least a second
 client joins the process. In order to do this, you need to set up a second client that can be:
 
-  - A dummy FL client that uses data from a static dataset file. For instance, assuming we have the ToN-IoT partitions in CSV files, create a Flower client that loads the data from any of the partitions we provide. To do this from scratch, please refer [Flower official documentation](https://flower.dev/docs/). However, we have also provided an example named `auxiliary_client.py` under the root folder.
-  - Another consumer module similar to the described one, but configured to work with a different MISP server which would represent another organization/domain.
+  - A dummy FL client that uses data from a static dataset file. For instance, assuming we have the ToN-IoT partitions in CSV files, create a Flower client that loads the data from any of the partitions we provide. To do this from scratch, please refer [Flower official documentation](https://flower.dev/docs/). However, we have also provided an example named `auxiliary_client.py` under the root folder for quick testing.
+  - Another consumer module similar to the described one, but configured to work with a different MISP server which would represent another organization/domain. To do so, you can reutilize the consumer module but tweaking the parameters in the `keys.py`.
