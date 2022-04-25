@@ -44,7 +44,7 @@ instances needed to register against the aggregator and consume the data) throug
 python consumer.py --retr_interval=<retrieve interval in seconds> --inst_threshold=<number of instances>
 ```
 
-By last, run the `producer.py` module, providing the two main parameters `--nobjects` or `-n` (number of desired objects per event) and `--data_source` or `-d` (data source file). To launch it with the provided data files, set this last parameter to one of the three provided data files (`data\ton_iot_1.csv`, `data\ton_iot_2.csv` or `data\ton_iot_3.csv`):
+By last, run the `producer.py` module, providing the two main parameters `--nobjects` or `-n` (number of desired objects per event) and `--data_source` or `-d` (data source file). To launch it with the provided data files, set this last parameter to one of the three `data\ton_iot_1.csv`, `data\ton_iot_2.csv` or `data\ton_iot_3.csv`:
 
 ```
 python producer.py --nobjects=<objects per event> --data_source=<data source filename>
