@@ -1,9 +1,11 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 import flwr as fl
 import pandas as pd
 import numpy as np
 import warnings
 
-# To avoid TF future warnings
 warnings.filterwarnings("ignore", category=FutureWarning)
 import tensorflow
 import configparser
@@ -17,14 +19,11 @@ CONFIG_FILE = "resources/fl.ini"
 
 
 def preprocess_data(data):
-    # Transform INF and NaN values to median
     pd.set_option("use_inf_as_na", True)
     data.fillna(data.median(), inplace=True)
 
-    # Shuffle samples (optional)
     data = data.sample(frac=1).reset_index(drop=True)
 
-    # Normalize column values except for label column
     scaler = MinMaxScaler()
     features_to_normalize = data.columns.difference(["Label"])
     data[features_to_normalize] = scaler.fit_transform(data[features_to_normalize])
@@ -33,7 +32,6 @@ def preprocess_data(data):
 
 
 def split_data(data, test_size):
-    # Split data intro train/test sets
     x_0 = data.iloc[:, :-1]
     y_0 = data.iloc[:, -1]
     x = np.array(x_0)
