@@ -6,11 +6,11 @@ method for an organization to use the IoCs shared through MISP and give a feedba
 an aggregator and some other clients, and a final model, trained collaboratively by all of the clients with their local data, is obtained. This resulting model is fed
 back to the local MISP server and, therefore, it can be used by other involved organizations to deploy it in, e.g., an anomaly-based IDS.
 
-For this experiment, we use several partitions of the [ToN-IoT dataset](https://research.unsw.edu.au/projects/toniot-datasets), one per configured client. Each partition (representing the data which would belong to a specific
-organization) is used to feed the MISP server on one side (one event per dataset instance). On the other side, a MISP retriever module will periodically ask for new 
-events and, once it has enough data, it will register against the FL aggregator that will be running from the beginning of the whole process. When the number of clients
-connected to the aggregator is equal or higher than 2, the FL process will begin and a ML model will be trained collaboratively by the registered clients. Finally, this
-model can be pushed back to the local MISP server to share it with other domains (not done yet). This workflow can be consulted in detail in the following sequence diagram:
+For this experiment, we use several partitions of the [ToN-IoT dataset](https://research.unsw.edu.au/projects/toniot-datasets), one per configured client. Each partition, representing the data which would belong to a specific
+organization, is used by a producer (see `producer.py`) to feed the MISP server on one side, creating and uploading MISP events which contain one or multiple dataset instances, encoded as MISP objects. On the other side, a consumer module will periodically ask the MISP server for new 
+events and, once it has enough data, will register against the FL aggregator that will be running from the beginning of the whole process (see `aggregator.py`). When the number of clients
+connected to the aggregator is equal or higher than 2, the FL process begins and a ML model is trained collaboratively by the registered clients. Finally, this
+model is pushed back to the MISP server as an event with an attachment containing the ML model, from where it is shared to other domains. This workflow can be consulted in detail in the following sequence diagram:
 
 <p align="center">
   <img src="https://github.com/pablofs20/misp-fl/blob/master/images/seq_diagram.png?raw=true" alt="Sublime's custom image"/>
@@ -25,10 +25,10 @@ This software is coded and tested in Python 3.6.9. Since multiple libraries have
 recommend to set up a Conda/Miniconda environment and provide the requirements file as input. If you choose this option, please consult the
 [Conda documentation](https://docs.conda.io/en/latest/) for further details.
 
-In addition to the code in this repository, a MISP server has to be configured and a new object template adapted to the ToN-IoT dataset form  has to
-be created. We provide an object definition example inside `misp` folder. Also, the `keys.py` module has to be completed, at least, with the MISP server URL and a user authentication key.
+In addition to the code in this repository, a MISP server has to be configured and a new object template adapted to the ToN-IoT dataset form has to
+be created. We provide the object definition file used for testing inside `misp` folder. Also, the `keys.py` module has to be completed, at least, with the MISP server URL and a user authentication key.
 
-By last, some of the main FL parameters, for both the aggregator and the clients, can be customized in the `resources/fl.ini` configuration file. Inside the file, a brief description of each one is given.
+By last, some of the main FL parameters, for both the aggregator and the clients, can be customized in the `resources/fl.ini` configuration file. Inside it, a brief description of each one is given.
 
 ## Execution
 First, launch the `aggregator.py` module. This module does not expect any command line parameters, so simply run:
@@ -37,16 +37,15 @@ First, launch the `aggregator.py` module. This module does not expect any comman
 python aggregator.py
 ```
 
-Next, run the `misp_retriever.py` module, providing the two main parameters `--retrieve_interval` or `-r` (time interval for querying MISP for new data) and `--inst_threshold` or `-i` (# of
+Next, run the `consumer.py` module, providing the two main parameters `--retrieve_interval` or `-r` (time interval for querying MISP for new data) and `--inst_threshold` or `-i` (# of
 instances needed to register against the aggregator and consume the data) through command line: 
 
 ```
-python misp_retriever.py --retr_interval=<retrieve interval in seconds> --inst_threshold=<number of instances>
+python consumer.py --retr_interval=<retrieve interval in seconds> --inst_threshold=<number of instances>
 ```
 
-If the instance threshold is reached, a FL client will be created and registered against the aggregator. However, the process will not start until at least a second
+If the instance threshold is reached, a Flower FL client (see `FLClient.py`) will be created and registered against the aggregator. However, the process will not start until at least a second
 client joins the process. In order to do this, you need to set up a second client that can be:
 
-  - A normal FL client that uses data from a static dataset file. For instance, assuming we have the ToN-IoT partitions in CSV files, create a Flower client able to 
-  load the data from the file, preprocess it, create an initial ML model and register against the aggregator. To do this, please refer to the `FLClient.py` code and [Flower official documentation](https://flower.dev/docs/).
-  - Another MISP-FL client (similar to the described one) that retrieves the data from its local MISP server. This can represent another organization.
+  - A dummy FL client that uses data from a static dataset file. For instance, assuming we have the ToN-IoT partitions in CSV files, create a Flower client that loads the data from any of the partitions we provide. To do this from scratch, please refer [Flower official documentation](https://flower.dev/docs/). However, we have also provided an example named `auxiliary_client.py` under the root folder.
+  - Another consumer module similar to the described one, but configured to work with a different MISP server which would represent another organization/domain.
