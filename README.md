@@ -12,8 +12,11 @@ events and, once it has enough data, will register against the FL aggregator tha
 connected to the aggregator is equal or higher than 2, the FL process begins and a ML model is trained collaboratively by the registered clients. Finally, this
 model is pushed back to the MISP server as an event with an attachment containing the ML model, from where it is shared to other domains. This workflow can be consulted in detail in the following sequence diagram:
 
-<p float="left">
+<p float="center">
   <img src="https://github.com/pablofs20/misp-fl/blob/master/images/seq_diagram_producer.png?raw=true" alt="Sublime's custom image"/>
+</p>
+
+<p float="center">
   <img src="https://github.com/pablofs20/misp-fl/blob/master/images/seq_diagram_consumer.png?raw=true" alt="Sublime's custom image"/>
 </p>
 
