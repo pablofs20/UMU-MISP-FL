@@ -74,7 +74,7 @@ def get_config():
     )
 
 
-class ToNIoTClient(fl.client.NumPyClient):
+class StandardClient(fl.client.NumPyClient):
     def __init__(self, client):
         self.x_train, self.x_test, self.y_train, self.y_test = (
             client.x_train,
@@ -134,7 +134,7 @@ class FLClient:
             "{aggregator_ip}:{aggregator_port}".format(
                 aggregator_ip=self.aggregator_ip, aggregator_port=self.aggregator_port
             ),
-            client=ToNIoTClient(self),
+            client=StandardClient(self),
         )
 
     def get_final_model(self):
