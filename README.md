@@ -8,17 +8,18 @@ back to the local MISP server and, therefore, it can be used by other involved o
 
 For this experiment, we use several partitions of the [ToN-IoT dataset](https://research.unsw.edu.au/projects/toniot-datasets), one per configured client. Each partition, representing the data which would belong to a specific
 organization, is used by a producer (see `producer.py`) to feed the MISP server on one side, creating and uploading MISP events which contain one or multiple dataset instances, encoded as MISP objects. On the other side, a consumer module will periodically ask the MISP server for new 
-events and, once it has enough data, will register against the FL aggregator that will be running from the beginning of the whole process (see `aggregator.py`). When the number of clients
+events and, once it has enough data, will register against the FL aggregator that is meant to be running from the beginning of the whole process (see `aggregator.py`). When the number of clients
 connected to the aggregator is equal or higher than 2, the FL process begins and a ML model is trained collaboratively by the registered clients. Finally, this
-model is pushed back to the MISP server as an event with an attachment containing the ML model, from where it is shared to other domains. This workflow can be consulted in detail in the following sequence diagram:
+model is pushed back to the MISP server as an event with an attachment containing the ML model, from where it is shared to other domains. This workflow can be consulted in detail in the following sequence diagrams:
 
 <p align="center">
-  <img src="https://github.com/pablofs20/misp-fl/blob/master/images/seq_diagram.png?raw=true" alt="Sublime's custom image"/>
+  <img src="https://github.com/pablofs20/misp-fl/blob/master/images/sequence_producer.png?raw=true" alt="Sublime's custom image"/>
+  <img src="https://github.com/pablofs20/misp-fl/blob/master/images/sequence_consumer.png?raw=true" alt="Sublime's custom image"/>
 </p>
 
-In this version, we shall remark that the database entity, since it will only be used to store the timestamp of the last processed event, has been replaced with a local file `last_timestamp` inside the `resources` folder. It should be noted that the initial timestamp is set to 0 in order to retrieve all the available events (first execution). 
+In addition, we shall remark that, currently in this first version, the timestamp of the last processed event is saved to a local file `last_timestamp` inside the `resources` folder. It should be noted that the initial timestamp is set to 0 in order to retrieve all the available events (first execution).
 
-For the FL part, we leverage the Flower framework. Please consult the [Flower official documentation](https://flower.dev/docs/) for further details. We also provide some examples of lightweight ToN-IoT partitions under `data` folder, each one containing 1000 samples and 5 different labels (benign, xss, injection, password and scanning) for testing purposes.
+For the FL part, we leverage the Flower framework. Please consult the [Flower official documentation](https://flower.dev/docs/) for further details. We also provide some examples of lightweight ToN-IoT partitions under `data` folder, each one containing 1000 samples and 5 different labels/attacks (benign, xss, injection, password and scanning) for testing purposes.
 
 ## Configuration
 This software is coded and tested in Python 3.6.9. Since multiple libraries have been employed, we provide a Python requirements file under `resources` folder containing all the dependencies. From this, we
