@@ -55,4 +55,4 @@ If the instance threshold is reached, a Flower FL client (see `FLClient.py`) wil
 client joins the process. In order to do this, you need to set up a second client that can be:
 
   - A dummy FL client that uses data from a static dataset file. As a suggestion, create a Flower client that loads the data from any of the partitions we provide in this repository. To do this from scratch, please refer [Flower official documentation](https://flower.dev/docs/). However, we have also provided an example named `auxiliary_client.py` under the root folder for quick testing.
-  - Another consumer module similar to the described one, but configured to work with a different MISP server which would represent another organization/domain. To do so, you can reutilize the consumer module but tweaking the parameters in the `keys.py` file.
+  - Another consumer module similar to the described one, but configured to work with a different MISP server which would represent another organization/domain. To do so, you can reuse the consumer module but tweaking the parameters in the `keys.py` file.
